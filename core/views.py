@@ -11,7 +11,7 @@ def save_embed(request):
         form = SubmitEmbed(request.POST)
         if form.is_valid():
             url = form.cleaned_data['url']
-            r = requests.get('http://api.embed.ly/1/oembed?url=' + url)
+            r = requests.get('http://api.embed.ly/1/oembed?key=key&url=' + url)
             json = r.json()
             serializer = EmbedSerializer(data=json)
             if serializer.is_valid():
